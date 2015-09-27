@@ -1,0 +1,1 @@
+C:\Development\Servers\wamp\www\pacs\framework\vendor\bin\doctrine orm:schema-tool:update
