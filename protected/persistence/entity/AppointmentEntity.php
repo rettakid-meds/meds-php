@@ -9,10 +9,14 @@ class AppointmentEntity 	{
     protected $practice;
     /** @ManyToOne(targetEntity="UserEntity" , fetch="LAZY") @JoinColumn(name="USER", referencedColumnName="USER_ID") **/
     protected $user;
-    /** @Column(name="EFF_FRM" , type="datetime" , nullable=false) **/
-    protected $effFrm;
-    /** @Column(name="EFF_TO" , type="datetime" , nullable=false) **/
-    protected $effTo;
+    /** @Column(name="EXPECTED_FRM" , type="datetime" , nullable=false) **/
+    protected $expectedFrm;
+    /** @Column(name="EXPECTED_TO" , type="datetime" , nullable=false) **/
+    protected $expectedTo;
+    /** @Column(name="ACTUAL_FRM" , type="datetime") **/
+    protected $actualFrm;
+    /** @Column(name="ACTUAL_TO" , type="datetime") **/
+    protected $actualTo;
 
     public function getAppointmentId()	{
         return $this->appointmentId;
@@ -38,20 +42,36 @@ class AppointmentEntity 	{
 		$this->user = $user;
 	}
 
-    public function getEffFrm()	{
-        return $this->effFrm;
+    public function getExpectedFrm()	{
+        return $this->expectedFrm;
 	}
 
-	public function setEffFrm($effFrm)	{
-		$this->effFrm = $effFrm;
+	public function setExpectedFrm($expectedFrm)	{
+		$this->expectedFrm = $expectedFrm;
 	}
 
-    public function getEffTo()	{
-        return $this->effTo;
+    public function getExpectedTo()	{
+        return $this->expectedTo;
 	}
 
-	public function setEffTo($effTo)	{
-		$this->effTo = $effTo;
+	public function setExpectedTo($expectedTo)	{
+		$this->expectedTo = $expectedTo;
+	}
+
+    public function getActualFrm()	{
+        return $this->actualFrm;
+	}
+
+	public function setActualFrm($actualFrm)	{
+		$this->actualFrm = $actualFrm;
+	}
+
+    public function getActualTo()	{
+        return $this->actualTo;
+	}
+
+	public function setActualTo($actualTo)	{
+		$this->actualTo = $actualTo;
 	}
 
 

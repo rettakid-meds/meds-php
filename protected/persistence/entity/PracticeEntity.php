@@ -5,13 +5,17 @@ class PracticeEntity 	{
 
     /** @Id @Column(name="PRACTICE_ID" , type="bigint" , length=15 , nullable=false) @GeneratedValue **/
     protected $practiceId;
-    /** @Column(name="NAME" , type="string" , length=20) **/
+    /** @Column(name="NAME" , type="string" , length=50) **/
     protected $name;
     /** @Column(name="EMAIL" , type="string" , length=50 , nullable=false) **/
     protected $email;
-    /** @ManyToOne(targetEntity="LocationEntity" , fetch="LAZY") @JoinColumn(name="LOCATION", referencedColumnName="LOCATION_ID") **/
-    protected $location;
-    /** @Column(name="PHONE" , type="string" , length=15) **/
+    /** @Column(name="LONGITUDE" , type="float" , length=30 , nullable=false) **/
+    protected $longitude;
+    /** @Column(name="LATITUDE" , type="float" , length=30 , nullable=false) **/
+    protected $latitude;
+    /** @Column(name="ADDRESS" , type="string" , length=200 , nullable=false) **/
+    protected $address;
+    /** @Column(name="PHONE" , type="string" , length=20) **/
     protected $phone;
     /** @Column(name="FEE" , type="float" , length=30) **/
     protected $fee;
@@ -40,12 +44,28 @@ class PracticeEntity 	{
 		$this->email = $email;
 	}
 
-    public function getLocation()	{
-        return $this->location;
+    public function getLongitude()	{
+        return $this->longitude;
 	}
 
-	public function setLocation($location)	{
-		$this->location = $location;
+	public function setLongitude($longitude)	{
+		$this->longitude = $longitude;
+	}
+
+    public function getLatitude()	{
+        return $this->latitude;
+	}
+
+	public function setLatitude($latitude)	{
+		$this->latitude = $latitude;
+	}
+
+    public function getAddress()	{
+        return $this->address;
+	}
+
+	public function setAddress($address)	{
+		$this->address = $address;
 	}
 
     public function getPhone()	{

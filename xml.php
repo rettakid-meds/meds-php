@@ -10,9 +10,11 @@ require_once ($PROJ_PRESENTATION_CONTROLLER_ROOT.'DataContentController.php');
 require_once ($PROJ_PRESENTATION_CONTROLLER_ROOT.'UserController.php');
 require_once ($PROJ_PRESENTATION_CONTROLLER_ROOT.'DevicesTypeController.php');
 require_once ($PROJ_PRESENTATION_CONTROLLER_ROOT.'UserDeviceController.php');
-require_once ($PROJ_PRESENTATION_CONTROLLER_ROOT.'LocationController.php');
 require_once ($PROJ_PRESENTATION_CONTROLLER_ROOT.'PracticeController.php');
+require_once ($PROJ_PRESENTATION_CONTROLLER_ROOT.'DoctorController.php');
 require_once ($PROJ_PRESENTATION_CONTROLLER_ROOT.'AppointmentController.php');
+require_once ($PROJ_PRESENTATION_CONTROLLER_ROOT.'PrescriptionController.php');
+require_once ($PROJ_PRESENTATION_CONTROLLER_ROOT.'PrescriptionItemController.php');
 
 $app->run();
 

@@ -1,19 +1,19 @@
 <?php
 
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'Dto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'LocationDto.php');
 
 class PracticeDto extends Dto 	{
 
     private $practiceId;
     private $name;
     private $email;
-    private $location;
+    private $longitude;
+    private $latitude;
+    private $address;
     private $phone;
     private $fee;
 
 	public function __construct()	{
-		$this->location = new LocationDto();
 	}
 
     public function getPracticeId()	{
@@ -40,12 +40,28 @@ class PracticeDto extends Dto 	{
 		$this->email = $email;
 	}
 
-    public function getLocation()	{
-		return $this->location;
+    public function getLongitude()	{
+		return $this->longitude;
 	}
 
-	public function setLocation($location)	{
-		$this->location = $location;
+	public function setLongitude($longitude)	{
+		$this->longitude = $longitude;
+	}
+
+    public function getLatitude()	{
+		return $this->latitude;
+	}
+
+	public function setLatitude($latitude)	{
+		$this->latitude = $latitude;
+	}
+
+    public function getAddress()	{
+		return $this->address;
+	}
+
+	public function setAddress($address)	{
+		$this->address = $address;
 	}
 
     public function getPhone()	{

@@ -69,11 +69,25 @@ $app->get('/users/:id/userdevices', function ($id) use ($app) {
     $userDevice->printData($app);
 });
 
+$app->get('/users/:id/doctors', function ($id) use ($app) {
+	global $entityManager;
+   	$doctorEntities = $entityManager->getRepository("DoctorEntity")->findBy(array('user'=>$id));
+    $doctor = bindDoctorEntityArray($doctorEntities);
+    $doctor->printData($app);
+});
+
 $app->get('/users/:id/appointments', function ($id) use ($app) {
 	global $entityManager;
    	$appointmentEntities = $entityManager->getRepository("AppointmentEntity")->findBy(array('user'=>$id));
     $appointment = bindAppointmentEntityArray($appointmentEntities);
     $appointment->printData($app);
+});
+
+$app->get('/users/:id/prescriptions', function ($id) use ($app) {
+	global $entityManager;
+   	$prescriptionEntities = $entityManager->getRepository("PrescriptionEntity")->findBy(array('user'=>$id));
+    $prescription = bindPrescriptionEntityArray($prescriptionEntities);
+    $prescription->printData($app);
 });
 
 ?>

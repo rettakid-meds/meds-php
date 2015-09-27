@@ -9,14 +9,18 @@ class AppointmentDto extends Dto 	{
     private $appointmentId;
     private $practice;
     private $user;
-    private $effFrm;
-    private $effTo;
+    private $expectedFrm;
+    private $expectedTo;
+    private $actualFrm;
+    private $actualTo;
 
 	public function __construct()	{
 		$this->practice = new PracticeDto();
 		$this->user = new UserDto();
-		$this->effFrm = new \DateTime("now");
-		$this->effTo = new \DateTime("now");
+		$this->expectedFrm = new \DateTime("now");
+		$this->expectedTo = new \DateTime("now");
+		$this->actualFrm = new \DateTime("now");
+		$this->actualTo = new \DateTime("now");
 	}
 
     public function getAppointmentId()	{
@@ -43,20 +47,36 @@ class AppointmentDto extends Dto 	{
 		$this->user = $user;
 	}
 
-    public function getEffFrm()	{
-		return $this->effFrm;
+    public function getExpectedFrm()	{
+		return $this->expectedFrm;
 	}
 
-	public function setEffFrm($effFrm)	{
-		$this->effFrm = $effFrm;
+	public function setExpectedFrm($expectedFrm)	{
+		$this->expectedFrm = $expectedFrm;
 	}
 
-    public function getEffTo()	{
-		return $this->effTo;
+    public function getExpectedTo()	{
+		return $this->expectedTo;
 	}
 
-	public function setEffTo($effTo)	{
-		$this->effTo = $effTo;
+	public function setExpectedTo($expectedTo)	{
+		$this->expectedTo = $expectedTo;
+	}
+
+    public function getActualFrm()	{
+		return $this->actualFrm;
+	}
+
+	public function setActualFrm($actualFrm)	{
+		$this->actualFrm = $actualFrm;
+	}
+
+    public function getActualTo()	{
+		return $this->actualTo;
+	}
+
+	public function setActualTo($actualTo)	{
+		$this->actualTo = $actualTo;
 	}
 
 
