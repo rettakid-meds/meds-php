@@ -76,7 +76,7 @@ class Dto {
 					$displayMethodValue = $methodValue->format('Y-m-d H:i:s.0 T');
 					echo "<$displayName>$displayMethodValue</$displayName>";
 				} elseif ($methodValue instanceof Dto)	{
-					$methodValue->printXml($app,strtolower($className)."dto");
+					$methodValue->printXmlData($app,strtolower($methodName)."dto");
 				}  else 	{
     				echo "<$displayName>".htmlspecialchars($methodValue, ENT_XML1)."</$displayName>";
 				}
@@ -86,7 +86,7 @@ class Dto {
 		echo "</$displayClassName>";
 	}
 
-	public function printXml($app,$displayClassName)	{
+	public function printXmlData($app,$displayClassName)	{
 		$res = $app->response();
 		$res['Content-Type'] = 'text/xml';
 
@@ -113,7 +113,7 @@ class Dto {
 					$displayMethodValue = $methodValue->format('Y-m-d H:i:s.0 T');
 					echo "<$displayName>$displayMethodValue</$displayName>";
 				} elseif ($methodValue instanceof Dto)	{
-					$methodValue->printXml($app);
+					$methodValue->printXmlData($app,strtolower($methodName)."dto");
 				}  else 	{
     				echo "<$displayName>".htmlspecialchars($methodValue, ENT_XML1)."</$displayName>";
 				}
