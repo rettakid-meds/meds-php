@@ -65,7 +65,7 @@ class Dto {
 				$methodValue = $this->$methodName();
 				$displayName = strtolower($displayName);
 				if ($methodValue == null)	{
-					echo "<$displayName>null</$displayName>";
+					
 				} else if (is_array($methodValue)) {
 					echo "<$displayName>";
 					foreach ($methodValue as $item) {
@@ -102,7 +102,7 @@ class Dto {
 				$methodValue = $this->$methodName();
 				$displayName = strtolower($displayName);
 				if ($methodValue == null)	{
-					echo "<$displayName>null</$displayName>";
+					
 				} else if (is_array($methodValue)) {
 					echo "<$displayName>";
 					foreach ($methodValue as $item) {
