@@ -3,7 +3,7 @@
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'Dto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'TradingDayDto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'ImageDto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'BioDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'DataContentDto.php');
 
 class PracticeDto extends Dto 	{
 
@@ -22,7 +22,7 @@ class PracticeDto extends Dto 	{
 	public function __construct()	{
 		$this->tradingDay = new TradingDayDto();
 		$this->image = new ImageDto();
-		$this->bio = new BioDto();
+		$this->bio = new DataContentDto();
 	}
 
     public function getPracticeId()	{

@@ -2,7 +2,7 @@
 
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'Dto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'UserDto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'TypeDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'DevicesTypeDto.php');
 
 class UserDeviceDto extends Dto 	{
 
@@ -14,7 +14,7 @@ class UserDeviceDto extends Dto 	{
 
 	public function __construct()	{
 		$this->user = new UserDto();
-		$this->type = new TypeDto();
+		$this->type = new DevicesTypeDto();
 	}
 
     public function getUserDevicesId()	{

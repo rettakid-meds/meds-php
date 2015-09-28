@@ -5,9 +5,9 @@ class TradingHourEntity 	{
 
     /** @Id @Column(name="TRADING_HOUR_ID" , type="bigint" , length=15 , nullable=false) @GeneratedValue **/
     protected $tradingHourId;
-    /** @Column(name="EFF_FRM" , type="date") **/
+    /** @Column(name="EFF_FRM" , type="time") **/
     protected $effFrm;
-    /** @Column(name="EFF_TO" , type="date") **/
+    /** @Column(name="EFF_TO" , type="time") **/
     protected $effTo;
     /** @Column(name="OPEN" , type="boolean" , nullable=false) **/
     protected $open;

@@ -78,7 +78,7 @@ class Dto {
 				} elseif ($methodValue instanceof Dto)	{
 					$methodValue->printXml($app);
 				}  else 	{
-					echo "<$displayName>$methodValue</$displayName>";
+    				echo "<$displayName>".htmlspecialchars($methodValue, ENT_XML1)."</$displayName>";
 				}
 			}
 			

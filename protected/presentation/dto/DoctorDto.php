@@ -3,7 +3,7 @@
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'Dto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'UserDto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'ImageDto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'BioDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'DataContentDto.php');
 
 class DoctorDto extends Dto 	{
 
@@ -15,7 +15,7 @@ class DoctorDto extends Dto 	{
 	public function __construct()	{
 		$this->user = new UserDto();
 		$this->image = new ImageDto();
-		$this->bio = new BioDto();
+		$this->bio = new DataContentDto();
 	}
 
     public function getDoctorId()	{

@@ -1,14 +1,14 @@
 <?php
 
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'Dto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'MondayDto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'TuesdayDto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'WednesdayDto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'ThursdayDto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'FridayDto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'SaturdayDto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'SundayDto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'PubicHolidayDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'TradingHourDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'TradingHourDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'TradingHourDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'TradingHourDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'TradingHourDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'TradingHourDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'TradingHourDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'TradingHourDto.php');
 
 class TradingDayDto extends Dto 	{
 
@@ -23,14 +23,14 @@ class TradingDayDto extends Dto 	{
     private $pubicHoliday;
 
 	public function __construct()	{
-		$this->monday = new MondayDto();
-		$this->tuesday = new TuesdayDto();
-		$this->wednesday = new WednesdayDto();
-		$this->thursday = new ThursdayDto();
-		$this->friday = new FridayDto();
-		$this->saturday = new SaturdayDto();
-		$this->sunday = new SundayDto();
-		$this->pubicHoliday = new PubicHolidayDto();
+		$this->monday = new TradingHourDto();
+		$this->tuesday = new TradingHourDto();
+		$this->wednesday = new TradingHourDto();
+		$this->thursday = new TradingHourDto();
+		$this->friday = new TradingHourDto();
+		$this->saturday = new TradingHourDto();
+		$this->sunday = new TradingHourDto();
+		$this->pubicHoliday = new TradingHourDto();
 	}
 
     public function getTradingDayId()	{

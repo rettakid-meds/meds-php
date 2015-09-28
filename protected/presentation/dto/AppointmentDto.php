@@ -3,7 +3,7 @@
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'Dto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'PracticeDto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'UserDto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'NoteDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'DataContentDto.php');
 
 class AppointmentDto extends Dto 	{
 
@@ -19,7 +19,7 @@ class AppointmentDto extends Dto 	{
 	public function __construct()	{
 		$this->practice = new PracticeDto();
 		$this->user = new UserDto();
-		$this->note = new NoteDto();
+		$this->note = new DataContentDto();
 		$this->expectedFrm = new \DateTime("now");
 		$this->expectedTo = new \DateTime("now");
 		$this->actualFrm = new \DateTime("now");
