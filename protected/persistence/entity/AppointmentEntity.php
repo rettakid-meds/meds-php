@@ -5,10 +5,12 @@ class AppointmentEntity 	{
 
     /** @Id @Column(name="APPOINTMENT_ID" , type="bigint" , length=15 , nullable=false) @GeneratedValue **/
     protected $appointmentId;
-    /** @ManyToOne(targetEntity="PracticeEntity" , fetch="LAZY") @JoinColumn(name="PRACTICE", referencedColumnName="PRACTICE_ID") **/
+    /** @ManyToOne(targetEntity="PracticeEntity" , fetch="LAZY") @JoinColumn(name="PRACTICE_ID", referencedColumnName="PRACTICE_ID") **/
     protected $practice;
-    /** @ManyToOne(targetEntity="UserEntity" , fetch="LAZY") @JoinColumn(name="USER", referencedColumnName="USER_ID") **/
+    /** @ManyToOne(targetEntity="UserEntity" , fetch="LAZY") @JoinColumn(name="USER_ID", referencedColumnName="USER_ID") **/
     protected $user;
+    /** @ManyToOne(targetEntity="DataContentEntity" , fetch="LAZY") @JoinColumn(name="NOTE_ID", referencedColumnName="DATA_CONTENT_ID") **/
+    protected $note;
     /** @Column(name="EXPECTED_FRM" , type="datetime" , nullable=false) **/
     protected $expectedFrm;
     /** @Column(name="EXPECTED_TO" , type="datetime" , nullable=false) **/
@@ -40,6 +42,14 @@ class AppointmentEntity 	{
 
 	public function setUser($user)	{
 		$this->user = $user;
+	}
+
+    public function getNote()	{
+        return $this->note;
+	}
+
+	public function setNote($note)	{
+		$this->note = $note;
 	}
 
     public function getExpectedFrm()	{

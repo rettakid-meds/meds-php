@@ -7,8 +7,9 @@ function bindDoctorDto($doctorDto)	{
 	    global $entityManager;
 		$doctorEntity = new DoctorEntity();
         $doctorEntity->setDoctorId($doctorDto->getDoctorId());
-        $doctorEntity->setPractice($entityManager->find("PracticeEntity", $doctorDto->getPractice()->getPracticeId()));
         $doctorEntity->setUser($entityManager->find("UserEntity", $doctorDto->getUser()->getUserId()));
+        $doctorEntity->setImage($entityManager->find("ImageEntity", $doctorDto->getImage()->getImageId()));
+        $doctorEntity->setBio($entityManager->find("BioEntity", $doctorDto->getBio()->getBioId()));
         return $doctorEntity;
     }	else {
         return null;
@@ -19,8 +20,9 @@ function bindDoctorEntity($doctorEntity)	{
 	if ($doctorEntity != null)	{
 		$doctorDto = new DoctorDto();
         $doctorDto->setDoctorId($doctorEntity->getDoctorId());
-        $doctorDto->setPractice(bindPracticeEntity($doctorEntity->getPractice()));
         $doctorDto->setUser(bindUserEntity($doctorEntity->getUser()));
+        $doctorDto->setImage(bindImageEntity($doctorEntity->getImage()));
+        $doctorDto->setBio(bindDataContentEntity($doctorEntity->getBio()));
         return $doctorDto;
     }	else {
         return null;

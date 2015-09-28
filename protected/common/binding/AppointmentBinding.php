@@ -9,6 +9,7 @@ function bindAppointmentDto($appointmentDto)	{
         $appointmentEntity->setAppointmentId($appointmentDto->getAppointmentId());
         $appointmentEntity->setPractice($entityManager->find("PracticeEntity", $appointmentDto->getPractice()->getPracticeId()));
         $appointmentEntity->setUser($entityManager->find("UserEntity", $appointmentDto->getUser()->getUserId()));
+        $appointmentEntity->setNote($entityManager->find("NoteEntity", $appointmentDto->getNote()->getNoteId()));
         $appointmentEntity->setExpectedFrm($appointmentDto->getExpectedFrm());
         $appointmentEntity->setExpectedTo($appointmentDto->getExpectedTo());
         $appointmentEntity->setActualFrm($appointmentDto->getActualFrm());
@@ -25,6 +26,7 @@ function bindAppointmentEntity($appointmentEntity)	{
         $appointmentDto->setAppointmentId($appointmentEntity->getAppointmentId());
         $appointmentDto->setPractice(bindPracticeEntity($appointmentEntity->getPractice()));
         $appointmentDto->setUser(bindUserEntity($appointmentEntity->getUser()));
+        $appointmentDto->setNote(bindDataContentEntity($appointmentEntity->getNote()));
         $appointmentDto->setExpectedFrm($appointmentEntity->getExpectedFrm());
         $appointmentDto->setExpectedTo($appointmentEntity->getExpectedTo());
         $appointmentDto->setActualFrm($appointmentEntity->getActualFrm());

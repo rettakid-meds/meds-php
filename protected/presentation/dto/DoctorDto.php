@@ -1,18 +1,21 @@
 <?php
 
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'Dto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'PracticeDto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'UserDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'ImageDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'BioDto.php');
 
 class DoctorDto extends Dto 	{
 
     private $doctorId;
-    private $practice;
     private $user;
+    private $image;
+    private $bio;
 
 	public function __construct()	{
-		$this->practice = new PracticeDto();
 		$this->user = new UserDto();
+		$this->image = new ImageDto();
+		$this->bio = new BioDto();
 	}
 
     public function getDoctorId()	{
@@ -23,20 +26,28 @@ class DoctorDto extends Dto 	{
 		$this->doctorId = $doctorId;
 	}
 
-    public function getPractice()	{
-		return $this->practice;
-	}
-
-	public function setPractice($practice)	{
-		$this->practice = $practice;
-	}
-
     public function getUser()	{
 		return $this->user;
 	}
 
 	public function setUser($user)	{
 		$this->user = $user;
+	}
+
+    public function getImage()	{
+		return $this->image;
+	}
+
+	public function setImage($image)	{
+		$this->image = $image;
+	}
+
+    public function getBio()	{
+		return $this->bio;
+	}
+
+	public function setBio($bio)	{
+		$this->bio = $bio;
 	}
 
 

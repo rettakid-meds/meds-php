@@ -2,19 +2,19 @@
 
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'Dto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'UserDto.php');
-require_once ($PROJ_PRESENTATION_DTO_ROOT.'DevicesTypeDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'TypeDto.php');
 
 class UserDeviceDto extends Dto 	{
 
     private $userDevicesId;
     private $user;
-    private $devicesType;
+    private $type;
     private $name;
     private $devicePushId;
 
 	public function __construct()	{
 		$this->user = new UserDto();
-		$this->devicesType = new DevicesTypeDto();
+		$this->type = new TypeDto();
 	}
 
     public function getUserDevicesId()	{
@@ -33,12 +33,12 @@ class UserDeviceDto extends Dto 	{
 		$this->user = $user;
 	}
 
-    public function getDevicesType()	{
-		return $this->devicesType;
+    public function getType()	{
+		return $this->type;
 	}
 
-	public function setDevicesType($devicesType)	{
-		$this->devicesType = $devicesType;
+	public function setType($type)	{
+		$this->type = $type;
 	}
 
     public function getName()	{

@@ -10,6 +10,7 @@ function bindPrescriptionDto($prescriptionDto)	{
         $prescriptionEntity->setAppointment($entityManager->find("AppointmentEntity", $prescriptionDto->getAppointment()->getAppointmentId()));
         $prescriptionEntity->setDoctor($entityManager->find("DoctorEntity", $prescriptionDto->getDoctor()->getDoctorId()));
         $prescriptionEntity->setUser($entityManager->find("UserEntity", $prescriptionDto->getUser()->getUserId()));
+        $prescriptionEntity->setFile($entityManager->find("FileEntity", $prescriptionDto->getFile()->getFileId()));
         $prescriptionEntity->setEffFrm($prescriptionDto->getEffFrm());
         $prescriptionEntity->setEffTo($prescriptionDto->getEffTo());
         return $prescriptionEntity;
@@ -25,6 +26,7 @@ function bindPrescriptionEntity($prescriptionEntity)	{
         $prescriptionDto->setAppointment(bindAppointmentEntity($prescriptionEntity->getAppointment()));
         $prescriptionDto->setDoctor(bindDoctorEntity($prescriptionEntity->getDoctor()));
         $prescriptionDto->setUser(bindUserEntity($prescriptionEntity->getUser()));
+        $prescriptionDto->setFile(bindFileEntity($prescriptionEntity->getFile()));
         $prescriptionDto->setEffFrm($prescriptionEntity->getEffFrm());
         $prescriptionDto->setEffTo($prescriptionEntity->getEffTo());
         return $prescriptionDto;

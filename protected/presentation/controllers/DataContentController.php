@@ -62,4 +62,25 @@ $app->delete('/datacontents/:id', function ($id) use ($app) {
 
 /*Referances*/
 
+$app->get('/datacontents/:id/practices', function ($id) use ($app) {
+	global $entityManager;
+   	$practiceEntities = $entityManager->getRepository("PracticeEntity")->findBy(array('datacontent'=>$id));
+    $practice = bindPracticeEntityArray($practiceEntities);
+    $practice->printData($app);
+});
+
+$app->get('/datacontents/:id/doctors', function ($id) use ($app) {
+	global $entityManager;
+   	$doctorEntities = $entityManager->getRepository("DoctorEntity")->findBy(array('datacontent'=>$id));
+    $doctor = bindDoctorEntityArray($doctorEntities);
+    $doctor->printData($app);
+});
+
+$app->get('/datacontents/:id/appointments', function ($id) use ($app) {
+	global $entityManager;
+   	$appointmentEntities = $entityManager->getRepository("AppointmentEntity")->findBy(array('datacontent'=>$id));
+    $appointment = bindAppointmentEntityArray($appointmentEntities);
+    $appointment->printData($app);
+});
+
 ?>

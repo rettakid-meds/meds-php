@@ -5,12 +5,14 @@ class PrescriptionEntity 	{
 
     /** @Id @Column(name="PRESCRIPTION_ID" , type="bigint" , length=15 , nullable=false) @GeneratedValue **/
     protected $prescriptionId;
-    /** @ManyToOne(targetEntity="AppointmentEntity" , fetch="LAZY") @JoinColumn(name="APPOINTMENT", referencedColumnName="APPOINTMENT_ID") **/
+    /** @ManyToOne(targetEntity="AppointmentEntity" , fetch="LAZY") @JoinColumn(name="APPOINTMENT_ID", referencedColumnName="APPOINTMENT_ID") **/
     protected $appointment;
-    /** @ManyToOne(targetEntity="DoctorEntity" , fetch="LAZY") @JoinColumn(name="DOCTOR", referencedColumnName="DOCTOR_ID") **/
+    /** @ManyToOne(targetEntity="DoctorEntity" , fetch="LAZY") @JoinColumn(name="DOCTOR_ID", referencedColumnName="DOCTOR_ID") **/
     protected $doctor;
-    /** @ManyToOne(targetEntity="UserEntity" , fetch="LAZY") @JoinColumn(name="USER", referencedColumnName="USER_ID") **/
+    /** @ManyToOne(targetEntity="UserEntity" , fetch="LAZY") @JoinColumn(name="USER_ID", referencedColumnName="USER_ID") **/
     protected $user;
+    /** @ManyToOne(targetEntity="FileEntity" , fetch="LAZY") @JoinColumn(name="FILE_ID", referencedColumnName="FILE_ID") **/
+    protected $file;
     /** @Column(name="EFF_FRM" , type="datetime" , nullable=false) **/
     protected $effFrm;
     /** @Column(name="EFF_TO" , type="datetime" , nullable=false) **/
@@ -46,6 +48,14 @@ class PrescriptionEntity 	{
 
 	public function setUser($user)	{
 		$this->user = $user;
+	}
+
+    public function getFile()	{
+        return $this->file;
+	}
+
+	public function setFile($file)	{
+		$this->file = $file;
 	}
 
     public function getEffFrm()	{

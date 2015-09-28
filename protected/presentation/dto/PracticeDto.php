@@ -1,6 +1,9 @@
 <?php
 
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'Dto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'TradingDayDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'ImageDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'BioDto.php');
 
 class PracticeDto extends Dto 	{
 
@@ -10,10 +13,16 @@ class PracticeDto extends Dto 	{
     private $longitude;
     private $latitude;
     private $address;
+    private $tradingDay;
     private $phone;
     private $fee;
+    private $image;
+    private $bio;
 
 	public function __construct()	{
+		$this->tradingDay = new TradingDayDto();
+		$this->image = new ImageDto();
+		$this->bio = new BioDto();
 	}
 
     public function getPracticeId()	{
@@ -64,6 +73,14 @@ class PracticeDto extends Dto 	{
 		$this->address = $address;
 	}
 
+    public function getTradingDay()	{
+		return $this->tradingDay;
+	}
+
+	public function setTradingDay($tradingDay)	{
+		$this->tradingDay = $tradingDay;
+	}
+
     public function getPhone()	{
 		return $this->phone;
 	}
@@ -78,6 +95,22 @@ class PracticeDto extends Dto 	{
 
 	public function setFee($fee)	{
 		$this->fee = $fee;
+	}
+
+    public function getImage()	{
+		return $this->image;
+	}
+
+	public function setImage($image)	{
+		$this->image = $image;
+	}
+
+    public function getBio()	{
+		return $this->bio;
+	}
+
+	public function setBio($bio)	{
+		$this->bio = $bio;
 	}
 
 

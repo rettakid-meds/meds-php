@@ -5,7 +5,7 @@ class PrescriptionItemEntity 	{
 
     /** @Id @Column(name="PRESCRIPTION_ITEM_ID" , type="bigint" , length=15 , nullable=false) @GeneratedValue **/
     protected $prescriptionItemId;
-    /** @ManyToOne(targetEntity="PrescriptionEntity" , fetch="LAZY") @JoinColumn(name="PRESCRIPTION", referencedColumnName="PRESCRIPTION_ID") **/
+    /** @ManyToOne(targetEntity="PrescriptionEntity" , fetch="LAZY") @JoinColumn(name="PRESCRIPTION_ID", referencedColumnName="PRESCRIPTION_ID") **/
     protected $prescription;
     /** @Column(name="NAME" , type="string" , length=50 , nullable=false) **/
     protected $name;

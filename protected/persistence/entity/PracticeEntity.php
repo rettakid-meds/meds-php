@@ -15,10 +15,16 @@ class PracticeEntity 	{
     protected $latitude;
     /** @Column(name="ADDRESS" , type="string" , length=200 , nullable=false) **/
     protected $address;
+    /** @ManyToOne(targetEntity="TradingDayEntity" , fetch="LAZY") @JoinColumn(name="TRADING_DAY_ID", referencedColumnName="TRADING_DAY_ID") **/
+    protected $tradingDay;
     /** @Column(name="PHONE" , type="string" , length=20) **/
     protected $phone;
     /** @Column(name="FEE" , type="float" , length=30) **/
     protected $fee;
+    /** @ManyToOne(targetEntity="ImageEntity" , fetch="LAZY") @JoinColumn(name="IMAGE_ID", referencedColumnName="IMAGE_ID") **/
+    protected $image;
+    /** @ManyToOne(targetEntity="DataContentEntity" , fetch="LAZY") @JoinColumn(name="BIO_ID", referencedColumnName="DATA_CONTENT_ID") **/
+    protected $bio;
 
     public function getPracticeId()	{
         return $this->practiceId;
@@ -68,6 +74,14 @@ class PracticeEntity 	{
 		$this->address = $address;
 	}
 
+    public function getTradingDay()	{
+        return $this->tradingDay;
+	}
+
+	public function setTradingDay($tradingDay)	{
+		$this->tradingDay = $tradingDay;
+	}
+
     public function getPhone()	{
         return $this->phone;
 	}
@@ -82,6 +96,22 @@ class PracticeEntity 	{
 
 	public function setFee($fee)	{
 		$this->fee = $fee;
+	}
+
+    public function getImage()	{
+        return $this->image;
+	}
+
+	public function setImage($image)	{
+		$this->image = $image;
+	}
+
+    public function getBio()	{
+        return $this->bio;
+	}
+
+	public function setBio($bio)	{
+		$this->bio = $bio;
 	}
 
 

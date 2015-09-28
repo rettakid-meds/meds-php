@@ -5,10 +5,12 @@ class DoctorEntity 	{
 
     /** @Id @Column(name="DOCTOR_ID" , type="bigint" , length=15 , nullable=false) @GeneratedValue **/
     protected $doctorId;
-    /** @ManyToOne(targetEntity="PracticeEntity" , fetch="LAZY") @JoinColumn(name="PRACTICE", referencedColumnName="PRACTICE_ID") **/
-    protected $practice;
-    /** @ManyToOne(targetEntity="UserEntity" , fetch="LAZY") @JoinColumn(name="USER", referencedColumnName="USER_ID") **/
+    /** @ManyToOne(targetEntity="UserEntity" , fetch="LAZY") @JoinColumn(name="USER_ID", referencedColumnName="USER_ID") **/
     protected $user;
+    /** @ManyToOne(targetEntity="ImageEntity" , fetch="LAZY") @JoinColumn(name="IMAGE_ID", referencedColumnName="IMAGE_ID") **/
+    protected $image;
+    /** @ManyToOne(targetEntity="DataContentEntity" , fetch="LAZY") @JoinColumn(name="BIO_ID", referencedColumnName="DATA_CONTENT_ID") **/
+    protected $bio;
 
     public function getDoctorId()	{
         return $this->doctorId;
@@ -18,20 +20,28 @@ class DoctorEntity 	{
 		$this->doctorId = $doctorId;
 	}
 
-    public function getPractice()	{
-        return $this->practice;
-	}
-
-	public function setPractice($practice)	{
-		$this->practice = $practice;
-	}
-
     public function getUser()	{
         return $this->user;
 	}
 
 	public function setUser($user)	{
 		$this->user = $user;
+	}
+
+    public function getImage()	{
+        return $this->image;
+	}
+
+	public function setImage($image)	{
+		$this->image = $image;
+	}
+
+    public function getBio()	{
+        return $this->bio;
+	}
+
+	public function setBio($bio)	{
+		$this->bio = $bio;
 	}
 
 

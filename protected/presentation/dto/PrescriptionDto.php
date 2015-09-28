@@ -4,6 +4,7 @@ require_once ($PROJ_PRESENTATION_DTO_ROOT.'Dto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'AppointmentDto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'DoctorDto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'UserDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'FileDto.php');
 
 class PrescriptionDto extends Dto 	{
 
@@ -11,6 +12,7 @@ class PrescriptionDto extends Dto 	{
     private $appointment;
     private $doctor;
     private $user;
+    private $file;
     private $effFrm;
     private $effTo;
 
@@ -18,6 +20,7 @@ class PrescriptionDto extends Dto 	{
 		$this->appointment = new AppointmentDto();
 		$this->doctor = new DoctorDto();
 		$this->user = new UserDto();
+		$this->file = new FileDto();
 		$this->effFrm = new \DateTime("now");
 		$this->effTo = new \DateTime("now");
 	}
@@ -52,6 +55,14 @@ class PrescriptionDto extends Dto 	{
 
 	public function setUser($user)	{
 		$this->user = $user;
+	}
+
+    public function getFile()	{
+		return $this->file;
+	}
+
+	public function setFile($file)	{
+		$this->file = $file;
 	}
 
     public function getEffFrm()	{
