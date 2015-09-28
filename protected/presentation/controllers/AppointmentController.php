@@ -62,9 +62,9 @@ $app->delete('/appointments/:id', function ($id) use ($app) {
 
 /*Referances*/
 
-$app->get('/appointments/:id/files', function ($id) use ($app) {
+$app->get('/appointments/:id/appointments', function ($id) use ($app) {
 	global $entityManager;
-   	$prescriptionEntities = $entityManager->getRepository("PrescriptionEntity")->findBy(array('file'=>$id));
+   	$prescriptionEntities = $entityManager->getRepository("PrescriptionEntity")->findBy(array('appointment'=>$id));
     $prescription = bindPrescriptionEntityArray($prescriptionEntities);
     $prescription->printData($app);
 });

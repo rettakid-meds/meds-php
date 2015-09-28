@@ -69,9 +69,9 @@ $app->get('/doctors/:id/doctors', function ($id) use ($app) {
     $doctorPractice->printData($app);
 });
 
-$app->get('/doctors/:id/files', function ($id) use ($app) {
+$app->get('/doctors/:id/doctors', function ($id) use ($app) {
 	global $entityManager;
-   	$prescriptionEntities = $entityManager->getRepository("PrescriptionEntity")->findBy(array('file'=>$id));
+   	$prescriptionEntities = $entityManager->getRepository("PrescriptionEntity")->findBy(array('doctor'=>$id));
     $prescription = bindPrescriptionEntityArray($prescriptionEntities);
     $prescription->printData($app);
 });

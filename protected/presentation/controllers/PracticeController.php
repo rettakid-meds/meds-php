@@ -69,16 +69,16 @@ $app->get('/practices/:id/practices', function ($id) use ($app) {
     $practiceField->printData($app);
 });
 
-$app->get('/practices/:id/doctors', function ($id) use ($app) {
+$app->get('/practices/:id/practices', function ($id) use ($app) {
 	global $entityManager;
-   	$doctorPracticeEntities = $entityManager->getRepository("DoctorPracticeEntity")->findBy(array('doctor'=>$id));
+   	$doctorPracticeEntities = $entityManager->getRepository("DoctorPracticeEntity")->findBy(array('practice'=>$id));
     $doctorPractice = bindDoctorPracticeEntityArray($doctorPracticeEntities);
     $doctorPractice->printData($app);
 });
 
-$app->get('/practices/:id/datacontents', function ($id) use ($app) {
+$app->get('/practices/:id/practices', function ($id) use ($app) {
 	global $entityManager;
-   	$appointmentEntities = $entityManager->getRepository("AppointmentEntity")->findBy(array('datacontent'=>$id));
+   	$appointmentEntities = $entityManager->getRepository("AppointmentEntity")->findBy(array('practice'=>$id));
     $appointment = bindAppointmentEntityArray($appointmentEntities);
     $appointment->printData($app);
 });

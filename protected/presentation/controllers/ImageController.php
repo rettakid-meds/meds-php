@@ -62,16 +62,16 @@ $app->delete('/images/:id', function ($id) use ($app) {
 
 /*Referances*/
 
-$app->get('/images/:id/datacontents', function ($id) use ($app) {
+$app->get('/images/:id/images', function ($id) use ($app) {
 	global $entityManager;
-   	$practiceEntities = $entityManager->getRepository("PracticeEntity")->findBy(array('datacontent'=>$id));
+   	$practiceEntities = $entityManager->getRepository("PracticeEntity")->findBy(array('image'=>$id));
     $practice = bindPracticeEntityArray($practiceEntities);
     $practice->printData($app);
 });
 
-$app->get('/images/:id/datacontents', function ($id) use ($app) {
+$app->get('/images/:id/images', function ($id) use ($app) {
 	global $entityManager;
-   	$doctorEntities = $entityManager->getRepository("DoctorEntity")->findBy(array('datacontent'=>$id));
+   	$doctorEntities = $entityManager->getRepository("DoctorEntity")->findBy(array('image'=>$id));
     $doctor = bindDoctorEntityArray($doctorEntities);
     $doctor->printData($app);
 });

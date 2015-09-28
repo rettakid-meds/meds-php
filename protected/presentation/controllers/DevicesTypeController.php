@@ -62,9 +62,9 @@ $app->delete('/devicestypes/:id', function ($id) use ($app) {
 
 /*Referances*/
 
-$app->get('/devicestypes/:id/devicestypes', function ($id) use ($app) {
+$app->get('/devicestypes/:id/types', function ($id) use ($app) {
 	global $entityManager;
-   	$userDeviceEntities = $entityManager->getRepository("UserDeviceEntity")->findBy(array('devicestype'=>$id));
+   	$userDeviceEntities = $entityManager->getRepository("UserDeviceEntity")->findBy(array('type'=>$id));
     $userDevice = bindUserDeviceEntityArray($userDeviceEntities);
     $userDevice->printData($app);
 });

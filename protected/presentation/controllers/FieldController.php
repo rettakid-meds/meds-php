@@ -62,9 +62,9 @@ $app->delete('/fields/:id', function ($id) use ($app) {
 
 /*Referances*/
 
-$app->get('/fields/:id/practices', function ($id) use ($app) {
+$app->get('/fields/:id/fields', function ($id) use ($app) {
 	global $entityManager;
-   	$practiceFieldEntities = $entityManager->getRepository("PracticeFieldEntity")->findBy(array('practice'=>$id));
+   	$practiceFieldEntities = $entityManager->getRepository("PracticeFieldEntity")->findBy(array('field'=>$id));
     $practiceField = bindPracticeFieldEntityArray($practiceFieldEntities);
     $practiceField->printData($app);
 });

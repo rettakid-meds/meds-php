@@ -62,9 +62,9 @@ $app->delete('/tradingdays/:id', function ($id) use ($app) {
 
 /*Referances*/
 
-$app->get('/tradingdays/:id/datacontents', function ($id) use ($app) {
+$app->get('/tradingdays/:id/tradingdays', function ($id) use ($app) {
 	global $entityManager;
-   	$practiceEntities = $entityManager->getRepository("PracticeEntity")->findBy(array('datacontent'=>$id));
+   	$practiceEntities = $entityManager->getRepository("PracticeEntity")->findBy(array('tradingday'=>$id));
     $practice = bindPracticeEntityArray($practiceEntities);
     $practice->printData($app);
 });
