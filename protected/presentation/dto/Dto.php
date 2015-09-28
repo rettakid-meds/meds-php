@@ -76,6 +76,43 @@ class Dto {
 					$displayMethodValue = $methodValue->format('Y-m-d H:i:s.0 T');
 					echo "<$displayName>$displayMethodValue</$displayName>";
 				} elseif ($methodValue instanceof Dto)	{
+					$methodValue->printXml($app,strtolower($className)."dto");
+				}  else 	{
+    				echo "<$displayName>".htmlspecialchars($methodValue, ENT_XML1)."</$displayName>";
+				}
+			}
+			
+		}
+		echo "</$displayClassName>";
+	}
+
+	public function printXml($app,$displayClassName)	{
+		$res = $app->response();
+		$res['Content-Type'] = 'text/xml';
+
+		$reflect = new \ReflectionClass($this);
+		$className = $reflect->getShortName();
+		$classVars = $reflect->getMethods();
+
+		echo "<$displayClassName>";
+		foreach ($classVars as $classVar)	{
+			$methodName = $classVar->getName();
+			if (substr($methodName,0,3) == "get")	{
+				$displayName = substr($methodName,3,strlen($methodName) - 3);
+				$methodValue = $this->$methodName();
+				$displayName = strtolower($displayName);
+				if ($methodValue == null)	{
+					echo "<$displayName>null</$displayName>";
+				} else if (is_array($methodValue)) {
+					echo "<$displayName>";
+					foreach ($methodValue as $item) {
+						$item->printXml($app);
+					}
+					echo "</$displayName>";
+				} elseif ($methodValue instanceof DateTime)	{
+					$displayMethodValue = $methodValue->format('Y-m-d H:i:s.0 T');
+					echo "<$displayName>$displayMethodValue</$displayName>";
+				} elseif ($methodValue instanceof Dto)	{
 					$methodValue->printXml($app);
 				}  else 	{
     				echo "<$displayName>".htmlspecialchars($methodValue, ENT_XML1)."</$displayName>";
