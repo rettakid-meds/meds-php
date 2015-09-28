@@ -62,56 +62,56 @@ $app->delete('/tradinghours/:id', function ($id) use ($app) {
 
 /*Referances*/
 
-$app->get('/tradinghours/:id/tradingdays', function ($id) use ($app) {
+$app->get('/tradinghours/:id/tradinghours', function ($id) use ($app) {
 	global $entityManager;
    	$tradingDayEntities = $entityManager->getRepository("TradingDayEntity")->findBy(array('tradinghour'=>$id));
     $tradingDay = bindTradingDayEntityArray($tradingDayEntities);
     $tradingDay->printData($app);
 });
 
-$app->get('/tradinghours/:id/tradingdays', function ($id) use ($app) {
+$app->get('/tradinghours/:id/tradinghours', function ($id) use ($app) {
 	global $entityManager;
    	$tradingDayEntities = $entityManager->getRepository("TradingDayEntity")->findBy(array('tradinghour'=>$id));
     $tradingDay = bindTradingDayEntityArray($tradingDayEntities);
     $tradingDay->printData($app);
 });
 
-$app->get('/tradinghours/:id/tradingdays', function ($id) use ($app) {
+$app->get('/tradinghours/:id/tradinghours', function ($id) use ($app) {
 	global $entityManager;
    	$tradingDayEntities = $entityManager->getRepository("TradingDayEntity")->findBy(array('tradinghour'=>$id));
     $tradingDay = bindTradingDayEntityArray($tradingDayEntities);
     $tradingDay->printData($app);
 });
 
-$app->get('/tradinghours/:id/tradingdays', function ($id) use ($app) {
+$app->get('/tradinghours/:id/tradinghours', function ($id) use ($app) {
 	global $entityManager;
    	$tradingDayEntities = $entityManager->getRepository("TradingDayEntity")->findBy(array('tradinghour'=>$id));
     $tradingDay = bindTradingDayEntityArray($tradingDayEntities);
     $tradingDay->printData($app);
 });
 
-$app->get('/tradinghours/:id/tradingdays', function ($id) use ($app) {
+$app->get('/tradinghours/:id/tradinghours', function ($id) use ($app) {
 	global $entityManager;
    	$tradingDayEntities = $entityManager->getRepository("TradingDayEntity")->findBy(array('tradinghour'=>$id));
     $tradingDay = bindTradingDayEntityArray($tradingDayEntities);
     $tradingDay->printData($app);
 });
 
-$app->get('/tradinghours/:id/tradingdays', function ($id) use ($app) {
+$app->get('/tradinghours/:id/tradinghours', function ($id) use ($app) {
 	global $entityManager;
    	$tradingDayEntities = $entityManager->getRepository("TradingDayEntity")->findBy(array('tradinghour'=>$id));
     $tradingDay = bindTradingDayEntityArray($tradingDayEntities);
     $tradingDay->printData($app);
 });
 
-$app->get('/tradinghours/:id/tradingdays', function ($id) use ($app) {
+$app->get('/tradinghours/:id/tradinghours', function ($id) use ($app) {
 	global $entityManager;
    	$tradingDayEntities = $entityManager->getRepository("TradingDayEntity")->findBy(array('tradinghour'=>$id));
     $tradingDay = bindTradingDayEntityArray($tradingDayEntities);
     $tradingDay->printData($app);
 });
 
-$app->get('/tradinghours/:id/tradingdays', function ($id) use ($app) {
+$app->get('/tradinghours/:id/tradinghours', function ($id) use ($app) {
 	global $entityManager;
    	$tradingDayEntities = $entityManager->getRepository("TradingDayEntity")->findBy(array('tradinghour'=>$id));
     $tradingDay = bindTradingDayEntityArray($tradingDayEntities);
