@@ -8,6 +8,7 @@ function bindDoctorDto($doctorDto)	{
 		$doctorEntity = new DoctorEntity();
         $doctorEntity->setDoctorId($doctorDto->getDoctorId());
         $doctorEntity->setUser($entityManager->find("UserEntity", $doctorDto->getUser()->getUserId()));
+        $doctorEntity->setIcon($entityManager->find("IconEntity", $doctorDto->getIcon()->getIconId()));
         $doctorEntity->setImage($entityManager->find("ImageEntity", $doctorDto->getImage()->getImageId()));
         $doctorEntity->setBio($entityManager->find("BioEntity", $doctorDto->getBio()->getBioId()));
         return $doctorEntity;
@@ -21,6 +22,7 @@ function bindDoctorEntity($doctorEntity)	{
 		$doctorDto = new DoctorDto();
         $doctorDto->setDoctorId($doctorEntity->getDoctorId());
         $doctorDto->setUser(bindUserEntity($doctorEntity->getUser()));
+        $doctorDto->setIcon(bindDataContentEntity($doctorEntity->getIcon()));
         $doctorDto->setImage(bindImageEntity($doctorEntity->getImage()));
         $doctorDto->setBio(bindDataContentEntity($doctorEntity->getBio()));
         return $doctorDto;

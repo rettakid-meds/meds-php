@@ -62,28 +62,28 @@ $app->delete('/users/:id', function ($id) use ($app) {
 
 /*Referances*/
 
-$app->get('/users/:id/users', function ($id) use ($app) {
+$app->get('/users/:id/userdevices/users', function ($id) use ($app) {
 	global $entityManager;
    	$userDeviceEntities = $entityManager->getRepository("UserDeviceEntity")->findBy(array('user'=>$id));
     $userDevice = bindUserDeviceEntityArray($userDeviceEntities);
     $userDevice->printData($app);
 });
 
-$app->get('/users/:id/users', function ($id) use ($app) {
+$app->get('/users/:id/doctors/users', function ($id) use ($app) {
 	global $entityManager;
    	$doctorEntities = $entityManager->getRepository("DoctorEntity")->findBy(array('user'=>$id));
     $doctor = bindDoctorEntityArray($doctorEntities);
     $doctor->printData($app);
 });
 
-$app->get('/users/:id/users', function ($id) use ($app) {
+$app->get('/users/:id/appointments/users', function ($id) use ($app) {
 	global $entityManager;
    	$appointmentEntities = $entityManager->getRepository("AppointmentEntity")->findBy(array('user'=>$id));
     $appointment = bindAppointmentEntityArray($appointmentEntities);
     $appointment->printData($app);
 });
 
-$app->get('/users/:id/users', function ($id) use ($app) {
+$app->get('/users/:id/prescriptions/users', function ($id) use ($app) {
 	global $entityManager;
    	$prescriptionEntities = $entityManager->getRepository("PrescriptionEntity")->findBy(array('user'=>$id));
     $prescription = bindPrescriptionEntityArray($prescriptionEntities);

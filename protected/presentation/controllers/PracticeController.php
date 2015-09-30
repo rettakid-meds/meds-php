@@ -62,21 +62,21 @@ $app->delete('/practices/:id', function ($id) use ($app) {
 
 /*Referances*/
 
-$app->get('/practices/:id/practices', function ($id) use ($app) {
+$app->get('/practices/:id/practicefields/practices', function ($id) use ($app) {
 	global $entityManager;
    	$practiceFieldEntities = $entityManager->getRepository("PracticeFieldEntity")->findBy(array('practice'=>$id));
     $practiceField = bindPracticeFieldEntityArray($practiceFieldEntities);
     $practiceField->printData($app);
 });
 
-$app->get('/practices/:id/practices', function ($id) use ($app) {
+$app->get('/practices/:id/doctorpractices/practices', function ($id) use ($app) {
 	global $entityManager;
    	$doctorPracticeEntities = $entityManager->getRepository("DoctorPracticeEntity")->findBy(array('practice'=>$id));
     $doctorPractice = bindDoctorPracticeEntityArray($doctorPracticeEntities);
     $doctorPractice->printData($app);
 });
 
-$app->get('/practices/:id/practices', function ($id) use ($app) {
+$app->get('/practices/:id/appointments/practices', function ($id) use ($app) {
 	global $entityManager;
    	$appointmentEntities = $entityManager->getRepository("AppointmentEntity")->findBy(array('practice'=>$id));
     $appointment = bindAppointmentEntityArray($appointmentEntities);

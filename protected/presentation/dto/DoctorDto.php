@@ -2,6 +2,7 @@
 
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'Dto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'UserDto.php');
+require_once ($PROJ_PRESENTATION_DTO_ROOT.'DataContentDto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'ImageDto.php');
 require_once ($PROJ_PRESENTATION_DTO_ROOT.'DataContentDto.php');
 
@@ -9,11 +10,13 @@ class DoctorDto extends Dto 	{
 
     private $doctorId;
     private $user;
+    private $icon;
     private $image;
     private $bio;
 
 	public function __construct()	{
 		$this->user = new UserDto();
+		$this->icon = new DataContentDto();
 		$this->image = new ImageDto();
 		$this->bio = new DataContentDto();
 	}
@@ -32,6 +35,14 @@ class DoctorDto extends Dto 	{
 
 	public function setUser($user)	{
 		$this->user = $user;
+	}
+
+    public function getIcon()	{
+		return $this->icon;
+	}
+
+	public function setIcon($icon)	{
+		$this->icon = $icon;
 	}
 
     public function getImage()	{

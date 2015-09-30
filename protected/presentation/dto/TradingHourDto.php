@@ -10,6 +10,8 @@ class TradingHourDto extends Dto 	{
     private $open;
 
 	public function __construct()	{
+		$this->effFrm = new \DateTime("now");
+		$this->effTo = new \DateTime("now");
 	}
 
     public function getTradingHourId()	{

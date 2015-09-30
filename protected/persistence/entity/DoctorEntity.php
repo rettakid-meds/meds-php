@@ -7,6 +7,8 @@ class DoctorEntity 	{
     protected $doctorId;
     /** @ManyToOne(targetEntity="UserEntity" , fetch="LAZY") @JoinColumn(name="USER_ID", referencedColumnName="USER_ID") **/
     protected $user;
+    /** @ManyToOne(targetEntity="DataContentEntity" , fetch="LAZY") @JoinColumn(name="ICON_ID", referencedColumnName="DATA_CONTENT_ID") **/
+    protected $icon;
     /** @ManyToOne(targetEntity="ImageEntity" , fetch="LAZY") @JoinColumn(name="IMAGE_ID", referencedColumnName="IMAGE_ID") **/
     protected $image;
     /** @ManyToOne(targetEntity="DataContentEntity" , fetch="LAZY") @JoinColumn(name="BIO_ID", referencedColumnName="DATA_CONTENT_ID") **/
@@ -26,6 +28,14 @@ class DoctorEntity 	{
 
 	public function setUser($user)	{
 		$this->user = $user;
+	}
+
+    public function getIcon()	{
+        return $this->icon;
+	}
+
+	public function setIcon($icon)	{
+		$this->icon = $icon;
 	}
 
     public function getImage()	{
