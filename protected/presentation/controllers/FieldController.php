@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'FieldBinding.php');
 
 $app->get('/fields', function () use ($app) {
 	global $entityManager;
-   	$fieldEntities = $entityManager->getRepository("FieldEntity")->findBy(array());
+    $queryArray = getfieldQueryArray($app);
+    $fieldEntities = $entityManager->getRepository("FieldEntity")->findBy(array());
     $fields = bindFieldEntityArray($fieldEntities);
     $fields->printData($app);
 });
@@ -68,5 +69,22 @@ $app->get('/fields/:id/practicefields/fields', function ($id) use ($app) {
     $practiceField = bindPracticeFieldEntityArray($practiceFieldEntities);
     $practiceField->printData($app);
 });
+
+function getfieldQueryArray($app)    {
+    $queryArray = array();
+    $fieldId = $app->request()->get('fieldId');
+    if ($fieldId != null)	{
+        $queryArray['fieldId'] = $fieldId;
+    }
+    $name = $app->request()->get('name');
+    if ($name != null)	{
+        $queryArray['name'] = $name;
+    }
+    $mapColor = $app->request()->get('mapColor');
+    if ($mapColor != null)	{
+        $queryArray['mapColor'] = $mapColor;
+    }
+    return $queryArray;
+}
 
 ?>

@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'DoctorPracticeBinding.php');
 
 $app->get('/doctorpractices', function () use ($app) {
 	global $entityManager;
-   	$doctorPracticeEntities = $entityManager->getRepository("DoctorPracticeEntity")->findBy(array());
+    $queryArray = getdoctorPracticeQueryArray($app);
+    $doctorPracticeEntities = $entityManager->getRepository("DoctorPracticeEntity")->findBy(array());
     $doctorPractices = bindDoctorPracticeEntityArray($doctorPracticeEntities);
     $doctorPractices->printData($app);
 });
@@ -61,5 +62,22 @@ $app->delete('/doctorpractices/:id', function ($id) use ($app) {
 });
 
 /*Referances*/
+
+function getdoctorPracticeQueryArray($app)    {
+    $queryArray = array();
+    $medsDoctorPracticeId = $app->request()->get('medsDoctorPracticeId');
+    if ($medsDoctorPracticeId != null)	{
+        $queryArray['medsDoctorPracticeId'] = $medsDoctorPracticeId;
+    }
+    $practice = $app->request()->get('practice');
+    if ($practice != null)	{
+        $queryArray['practice'] = $practice;
+    }
+    $doctor = $app->request()->get('doctor');
+    if ($doctor != null)	{
+        $queryArray['doctor'] = $doctor;
+    }
+    return $queryArray;
+}
 
 ?>

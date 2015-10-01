@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'AppointmentBinding.php');
 
 $app->get('/appointments', function () use ($app) {
 	global $entityManager;
-   	$appointmentEntities = $entityManager->getRepository("AppointmentEntity")->findBy(array());
+    $queryArray = getappointmentQueryArray($app);
+    $appointmentEntities = $entityManager->getRepository("AppointmentEntity")->findBy(array());
     $appointments = bindAppointmentEntityArray($appointmentEntities);
     $appointments->printData($app);
 });
@@ -68,5 +69,42 @@ $app->get('/appointments/:id/prescriptions/appointments', function ($id) use ($a
     $prescription = bindPrescriptionEntityArray($prescriptionEntities);
     $prescription->printData($app);
 });
+
+function getappointmentQueryArray($app)    {
+    $queryArray = array();
+    $appointmentId = $app->request()->get('appointmentId');
+    if ($appointmentId != null)	{
+        $queryArray['appointmentId'] = $appointmentId;
+    }
+    $practice = $app->request()->get('practice');
+    if ($practice != null)	{
+        $queryArray['practice'] = $practice;
+    }
+    $user = $app->request()->get('user');
+    if ($user != null)	{
+        $queryArray['user'] = $user;
+    }
+    $note = $app->request()->get('note');
+    if ($note != null)	{
+        $queryArray['note'] = $note;
+    }
+    $expectedFrm = $app->request()->get('expectedFrm');
+    if ($expectedFrm != null)	{
+        $queryArray['expectedFrm'] = $expectedFrm;
+    }
+    $expectedTo = $app->request()->get('expectedTo');
+    if ($expectedTo != null)	{
+        $queryArray['expectedTo'] = $expectedTo;
+    }
+    $actualFrm = $app->request()->get('actualFrm');
+    if ($actualFrm != null)	{
+        $queryArray['actualFrm'] = $actualFrm;
+    }
+    $actualTo = $app->request()->get('actualTo');
+    if ($actualTo != null)	{
+        $queryArray['actualTo'] = $actualTo;
+    }
+    return $queryArray;
+}
 
 ?>

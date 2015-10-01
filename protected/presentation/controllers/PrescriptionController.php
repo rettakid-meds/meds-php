@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'PrescriptionBinding.php');
 
 $app->get('/prescriptions', function () use ($app) {
 	global $entityManager;
-   	$prescriptionEntities = $entityManager->getRepository("PrescriptionEntity")->findBy(array());
+    $queryArray = getprescriptionQueryArray($app);
+    $prescriptionEntities = $entityManager->getRepository("PrescriptionEntity")->findBy(array());
     $prescriptions = bindPrescriptionEntityArray($prescriptionEntities);
     $prescriptions->printData($app);
 });
@@ -68,5 +69,38 @@ $app->get('/prescriptions/:id/prescriptionitems/prescriptions', function ($id) u
     $prescriptionItem = bindPrescriptionItemEntityArray($prescriptionItemEntities);
     $prescriptionItem->printData($app);
 });
+
+function getprescriptionQueryArray($app)    {
+    $queryArray = array();
+    $prescriptionId = $app->request()->get('prescriptionId');
+    if ($prescriptionId != null)	{
+        $queryArray['prescriptionId'] = $prescriptionId;
+    }
+    $appointment = $app->request()->get('appointment');
+    if ($appointment != null)	{
+        $queryArray['appointment'] = $appointment;
+    }
+    $doctor = $app->request()->get('doctor');
+    if ($doctor != null)	{
+        $queryArray['doctor'] = $doctor;
+    }
+    $user = $app->request()->get('user');
+    if ($user != null)	{
+        $queryArray['user'] = $user;
+    }
+    $file = $app->request()->get('file');
+    if ($file != null)	{
+        $queryArray['file'] = $file;
+    }
+    $effFrm = $app->request()->get('effFrm');
+    if ($effFrm != null)	{
+        $queryArray['effFrm'] = $effFrm;
+    }
+    $effTo = $app->request()->get('effTo');
+    if ($effTo != null)	{
+        $queryArray['effTo'] = $effTo;
+    }
+    return $queryArray;
+}
 
 ?>

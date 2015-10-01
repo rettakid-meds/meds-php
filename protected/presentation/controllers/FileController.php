@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'FileBinding.php');
 
 $app->get('/files', function () use ($app) {
 	global $entityManager;
-   	$fileEntities = $entityManager->getRepository("FileEntity")->findBy(array());
+    $queryArray = getfileQueryArray($app);
+    $fileEntities = $entityManager->getRepository("FileEntity")->findBy(array());
     $files = bindFileEntityArray($fileEntities);
     $files->printData($app);
 });
@@ -75,5 +76,26 @@ $app->get('/files/:id/prescriptions/files', function ($id) use ($app) {
     $prescription = bindPrescriptionEntityArray($prescriptionEntities);
     $prescription->printData($app);
 });
+
+function getfileQueryArray($app)    {
+    $queryArray = array();
+    $fileId = $app->request()->get('fileId');
+    if ($fileId != null)	{
+        $queryArray['fileId'] = $fileId;
+    }
+    $guid = $app->request()->get('guid');
+    if ($guid != null)	{
+        $queryArray['guid'] = $guid;
+    }
+    $name = $app->request()->get('name');
+    if ($name != null)	{
+        $queryArray['name'] = $name;
+    }
+    $effFrm = $app->request()->get('effFrm');
+    if ($effFrm != null)	{
+        $queryArray['effFrm'] = $effFrm;
+    }
+    return $queryArray;
+}
 
 ?>

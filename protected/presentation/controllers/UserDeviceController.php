@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'UserDeviceBinding.php');
 
 $app->get('/userdevices', function () use ($app) {
 	global $entityManager;
-   	$userDeviceEntities = $entityManager->getRepository("UserDeviceEntity")->findBy(array());
+    $queryArray = getuserDeviceQueryArray($app);
+    $userDeviceEntities = $entityManager->getRepository("UserDeviceEntity")->findBy(array());
     $userDevices = bindUserDeviceEntityArray($userDeviceEntities);
     $userDevices->printData($app);
 });
@@ -61,5 +62,30 @@ $app->delete('/userdevices/:id', function ($id) use ($app) {
 });
 
 /*Referances*/
+
+function getuserDeviceQueryArray($app)    {
+    $queryArray = array();
+    $userDevicesId = $app->request()->get('userDevicesId');
+    if ($userDevicesId != null)	{
+        $queryArray['userDevicesId'] = $userDevicesId;
+    }
+    $user = $app->request()->get('user');
+    if ($user != null)	{
+        $queryArray['user'] = $user;
+    }
+    $type = $app->request()->get('type');
+    if ($type != null)	{
+        $queryArray['type'] = $type;
+    }
+    $name = $app->request()->get('name');
+    if ($name != null)	{
+        $queryArray['name'] = $name;
+    }
+    $devicePushId = $app->request()->get('devicePushId');
+    if ($devicePushId != null)	{
+        $queryArray['devicePushId'] = $devicePushId;
+    }
+    return $queryArray;
+}
 
 ?>

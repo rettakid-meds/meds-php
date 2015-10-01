@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'TradingDayBinding.php');
 
 $app->get('/tradingdays', function () use ($app) {
 	global $entityManager;
-   	$tradingDayEntities = $entityManager->getRepository("TradingDayEntity")->findBy(array());
+    $queryArray = gettradingDayQueryArray($app);
+    $tradingDayEntities = $entityManager->getRepository("TradingDayEntity")->findBy(array());
     $tradingDays = bindTradingDayEntityArray($tradingDayEntities);
     $tradingDays->printData($app);
 });
@@ -68,5 +69,46 @@ $app->get('/tradingdays/:id/practices/tradingdays', function ($id) use ($app) {
     $practice = bindPracticeEntityArray($practiceEntities);
     $practice->printData($app);
 });
+
+function gettradingDayQueryArray($app)    {
+    $queryArray = array();
+    $tradingDayId = $app->request()->get('tradingDayId');
+    if ($tradingDayId != null)	{
+        $queryArray['tradingDayId'] = $tradingDayId;
+    }
+    $monday = $app->request()->get('monday');
+    if ($monday != null)	{
+        $queryArray['monday'] = $monday;
+    }
+    $tuesday = $app->request()->get('tuesday');
+    if ($tuesday != null)	{
+        $queryArray['tuesday'] = $tuesday;
+    }
+    $wednesday = $app->request()->get('wednesday');
+    if ($wednesday != null)	{
+        $queryArray['wednesday'] = $wednesday;
+    }
+    $thursday = $app->request()->get('thursday');
+    if ($thursday != null)	{
+        $queryArray['thursday'] = $thursday;
+    }
+    $friday = $app->request()->get('friday');
+    if ($friday != null)	{
+        $queryArray['friday'] = $friday;
+    }
+    $saturday = $app->request()->get('saturday');
+    if ($saturday != null)	{
+        $queryArray['saturday'] = $saturday;
+    }
+    $sunday = $app->request()->get('sunday');
+    if ($sunday != null)	{
+        $queryArray['sunday'] = $sunday;
+    }
+    $pubicHoliday = $app->request()->get('pubicHoliday');
+    if ($pubicHoliday != null)	{
+        $queryArray['pubicHoliday'] = $pubicHoliday;
+    }
+    return $queryArray;
+}
 
 ?>

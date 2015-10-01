@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'PracticeFieldBinding.php');
 
 $app->get('/practicefields', function () use ($app) {
 	global $entityManager;
-   	$practiceFieldEntities = $entityManager->getRepository("PracticeFieldEntity")->findBy(array());
+    $queryArray = getpracticeFieldQueryArray($app);
+    $practiceFieldEntities = $entityManager->getRepository("PracticeFieldEntity")->findBy(array());
     $practiceFields = bindPracticeFieldEntityArray($practiceFieldEntities);
     $practiceFields->printData($app);
 });
@@ -61,5 +62,22 @@ $app->delete('/practicefields/:id', function ($id) use ($app) {
 });
 
 /*Referances*/
+
+function getpracticeFieldQueryArray($app)    {
+    $queryArray = array();
+    $practiceFieldId = $app->request()->get('practiceFieldId');
+    if ($practiceFieldId != null)	{
+        $queryArray['practiceFieldId'] = $practiceFieldId;
+    }
+    $field = $app->request()->get('field');
+    if ($field != null)	{
+        $queryArray['field'] = $field;
+    }
+    $practice = $app->request()->get('practice');
+    if ($practice != null)	{
+        $queryArray['practice'] = $practice;
+    }
+    return $queryArray;
+}
 
 ?>

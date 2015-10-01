@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'PracticeBinding.php');
 
 $app->get('/practices', function () use ($app) {
 	global $entityManager;
-   	$practiceEntities = $entityManager->getRepository("PracticeEntity")->findBy(array());
+    $queryArray = getpracticeQueryArray($app);
+    $practiceEntities = $entityManager->getRepository("PracticeEntity")->findBy(array());
     $practices = bindPracticeEntityArray($practiceEntities);
     $practices->printData($app);
 });
@@ -82,5 +83,54 @@ $app->get('/practices/:id/appointments/practices', function ($id) use ($app) {
     $appointment = bindAppointmentEntityArray($appointmentEntities);
     $appointment->printData($app);
 });
+
+function getpracticeQueryArray($app)    {
+    $queryArray = array();
+    $practiceId = $app->request()->get('practiceId');
+    if ($practiceId != null)	{
+        $queryArray['practiceId'] = $practiceId;
+    }
+    $name = $app->request()->get('name');
+    if ($name != null)	{
+        $queryArray['name'] = $name;
+    }
+    $email = $app->request()->get('email');
+    if ($email != null)	{
+        $queryArray['email'] = $email;
+    }
+    $longitude = $app->request()->get('longitude');
+    if ($longitude != null)	{
+        $queryArray['longitude'] = $longitude;
+    }
+    $latitude = $app->request()->get('latitude');
+    if ($latitude != null)	{
+        $queryArray['latitude'] = $latitude;
+    }
+    $address = $app->request()->get('address');
+    if ($address != null)	{
+        $queryArray['address'] = $address;
+    }
+    $tradingDay = $app->request()->get('tradingDay');
+    if ($tradingDay != null)	{
+        $queryArray['tradingDay'] = $tradingDay;
+    }
+    $phone = $app->request()->get('phone');
+    if ($phone != null)	{
+        $queryArray['phone'] = $phone;
+    }
+    $fee = $app->request()->get('fee');
+    if ($fee != null)	{
+        $queryArray['fee'] = $fee;
+    }
+    $image = $app->request()->get('image');
+    if ($image != null)	{
+        $queryArray['image'] = $image;
+    }
+    $bio = $app->request()->get('bio');
+    if ($bio != null)	{
+        $queryArray['bio'] = $bio;
+    }
+    return $queryArray;
+}
 
 ?>

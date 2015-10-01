@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'TradingHourBinding.php');
 
 $app->get('/tradinghours', function () use ($app) {
 	global $entityManager;
-   	$tradingHourEntities = $entityManager->getRepository("TradingHourEntity")->findBy(array());
+    $queryArray = gettradingHourQueryArray($app);
+    $tradingHourEntities = $entityManager->getRepository("TradingHourEntity")->findBy(array());
     $tradingHours = bindTradingHourEntityArray($tradingHourEntities);
     $tradingHours->printData($app);
 });
@@ -117,5 +118,26 @@ $app->get('/tradinghours/:id/tradingdays/pubicholidays', function ($id) use ($ap
     $tradingDay = bindTradingDayEntityArray($tradingDayEntities);
     $tradingDay->printData($app);
 });
+
+function gettradingHourQueryArray($app)    {
+    $queryArray = array();
+    $tradingHourId = $app->request()->get('tradingHourId');
+    if ($tradingHourId != null)	{
+        $queryArray['tradingHourId'] = $tradingHourId;
+    }
+    $effFrm = $app->request()->get('effFrm');
+    if ($effFrm != null)	{
+        $queryArray['effFrm'] = $effFrm;
+    }
+    $effTo = $app->request()->get('effTo');
+    if ($effTo != null)	{
+        $queryArray['effTo'] = $effTo;
+    }
+    $open = $app->request()->get('open');
+    if ($open != null)	{
+        $queryArray['open'] = $open;
+    }
+    return $queryArray;
+}
 
 ?>

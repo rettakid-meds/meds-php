@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'DevicesTypeBinding.php');
 
 $app->get('/devicestypes', function () use ($app) {
 	global $entityManager;
-   	$devicesTypeEntities = $entityManager->getRepository("DevicesTypeEntity")->findBy(array());
+    $queryArray = getdevicesTypeQueryArray($app);
+    $devicesTypeEntities = $entityManager->getRepository("DevicesTypeEntity")->findBy(array());
     $devicesTypes = bindDevicesTypeEntityArray($devicesTypeEntities);
     $devicesTypes->printData($app);
 });
@@ -68,5 +69,22 @@ $app->get('/devicestypes/:id/userdevices/types', function ($id) use ($app) {
     $userDevice = bindUserDeviceEntityArray($userDeviceEntities);
     $userDevice->printData($app);
 });
+
+function getdevicesTypeQueryArray($app)    {
+    $queryArray = array();
+    $devicesTypeId = $app->request()->get('devicesTypeId');
+    if ($devicesTypeId != null)	{
+        $queryArray['devicesTypeId'] = $devicesTypeId;
+    }
+    $typeName = $app->request()->get('typeName');
+    if ($typeName != null)	{
+        $queryArray['typeName'] = $typeName;
+    }
+    $canPush = $app->request()->get('canPush');
+    if ($canPush != null)	{
+        $queryArray['canPush'] = $canPush;
+    }
+    return $queryArray;
+}
 
 ?>

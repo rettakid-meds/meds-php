@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'DoctorBinding.php');
 
 $app->get('/doctors', function () use ($app) {
 	global $entityManager;
-   	$doctorEntities = $entityManager->getRepository("DoctorEntity")->findBy(array());
+    $queryArray = getdoctorQueryArray($app);
+    $doctorEntities = $entityManager->getRepository("DoctorEntity")->findBy(array());
     $doctors = bindDoctorEntityArray($doctorEntities);
     $doctors->printData($app);
 });
@@ -75,5 +76,30 @@ $app->get('/doctors/:id/prescriptions/doctors', function ($id) use ($app) {
     $prescription = bindPrescriptionEntityArray($prescriptionEntities);
     $prescription->printData($app);
 });
+
+function getdoctorQueryArray($app)    {
+    $queryArray = array();
+    $doctorId = $app->request()->get('doctorId');
+    if ($doctorId != null)	{
+        $queryArray['doctorId'] = $doctorId;
+    }
+    $user = $app->request()->get('user');
+    if ($user != null)	{
+        $queryArray['user'] = $user;
+    }
+    $icon = $app->request()->get('icon');
+    if ($icon != null)	{
+        $queryArray['icon'] = $icon;
+    }
+    $image = $app->request()->get('image');
+    if ($image != null)	{
+        $queryArray['image'] = $image;
+    }
+    $bio = $app->request()->get('bio');
+    if ($bio != null)	{
+        $queryArray['bio'] = $bio;
+    }
+    return $queryArray;
+}
 
 ?>

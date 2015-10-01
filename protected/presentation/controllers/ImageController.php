@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'ImageBinding.php');
 
 $app->get('/images', function () use ($app) {
 	global $entityManager;
-   	$imageEntities = $entityManager->getRepository("ImageEntity")->findBy(array());
+    $queryArray = getimageQueryArray($app);
+    $imageEntities = $entityManager->getRepository("ImageEntity")->findBy(array());
     $images = bindImageEntityArray($imageEntities);
     $images->printData($app);
 });
@@ -75,5 +76,26 @@ $app->get('/images/:id/doctors/images', function ($id) use ($app) {
     $doctor = bindDoctorEntityArray($doctorEntities);
     $doctor->printData($app);
 });
+
+function getimageQueryArray($app)    {
+    $queryArray = array();
+    $imageId = $app->request()->get('imageId');
+    if ($imageId != null)	{
+        $queryArray['imageId'] = $imageId;
+    }
+    $file = $app->request()->get('file');
+    if ($file != null)	{
+        $queryArray['file'] = $file;
+    }
+    $width = $app->request()->get('width');
+    if ($width != null)	{
+        $queryArray['width'] = $width;
+    }
+    $height = $app->request()->get('height');
+    if ($height != null)	{
+        $queryArray['height'] = $height;
+    }
+    return $queryArray;
+}
 
 ?>

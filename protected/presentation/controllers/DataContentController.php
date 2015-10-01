@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'DataContentBinding.php');
 
 $app->get('/datacontents', function () use ($app) {
 	global $entityManager;
-   	$dataContentEntities = $entityManager->getRepository("DataContentEntity")->findBy(array());
+    $queryArray = getdataContentQueryArray($app);
+    $dataContentEntities = $entityManager->getRepository("DataContentEntity")->findBy(array());
     $dataContents = bindDataContentEntityArray($dataContentEntities);
     $dataContents->printData($app);
 });
@@ -89,5 +90,18 @@ $app->get('/datacontents/:id/appointments/notes', function ($id) use ($app) {
     $appointment = bindAppointmentEntityArray($appointmentEntities);
     $appointment->printData($app);
 });
+
+function getdataContentQueryArray($app)    {
+    $queryArray = array();
+    $dataContentId = $app->request()->get('dataContentId');
+    if ($dataContentId != null)	{
+        $queryArray['dataContentId'] = $dataContentId;
+    }
+    $data = $app->request()->get('data');
+    if ($data != null)	{
+        $queryArray['data'] = $data;
+    }
+    return $queryArray;
+}
 
 ?>

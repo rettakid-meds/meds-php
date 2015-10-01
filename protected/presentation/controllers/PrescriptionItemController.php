@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'PrescriptionItemBinding.php');
 
 $app->get('/prescriptionitems', function () use ($app) {
 	global $entityManager;
-   	$prescriptionItemEntities = $entityManager->getRepository("PrescriptionItemEntity")->findBy(array());
+    $queryArray = getprescriptionItemQueryArray($app);
+    $prescriptionItemEntities = $entityManager->getRepository("PrescriptionItemEntity")->findBy(array());
     $prescriptionItems = bindPrescriptionItemEntityArray($prescriptionItemEntities);
     $prescriptionItems->printData($app);
 });
@@ -61,5 +62,22 @@ $app->delete('/prescriptionitems/:id', function ($id) use ($app) {
 });
 
 /*Referances*/
+
+function getprescriptionItemQueryArray($app)    {
+    $queryArray = array();
+    $prescriptionItemId = $app->request()->get('prescriptionItemId');
+    if ($prescriptionItemId != null)	{
+        $queryArray['prescriptionItemId'] = $prescriptionItemId;
+    }
+    $prescription = $app->request()->get('prescription');
+    if ($prescription != null)	{
+        $queryArray['prescription'] = $prescription;
+    }
+    $name = $app->request()->get('name');
+    if ($name != null)	{
+        $queryArray['name'] = $name;
+    }
+    return $queryArray;
+}
 
 ?>

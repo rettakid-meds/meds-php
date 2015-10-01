@@ -6,7 +6,8 @@ require_once ($PROJ_COMMON_BINDING_ROOT.'UserBinding.php');
 
 $app->get('/users', function () use ($app) {
 	global $entityManager;
-   	$userEntities = $entityManager->getRepository("UserEntity")->findBy(array());
+    $queryArray = getuserQueryArray($app);
+    $userEntities = $entityManager->getRepository("UserEntity")->findBy(array());
     $users = bindUserEntityArray($userEntities);
     $users->printData($app);
 });
@@ -89,5 +90,46 @@ $app->get('/users/:id/prescriptions/users', function ($id) use ($app) {
     $prescription = bindPrescriptionEntityArray($prescriptionEntities);
     $prescription->printData($app);
 });
+
+function getuserQueryArray($app)    {
+    $queryArray = array();
+    $userId = $app->request()->get('userId');
+    if ($userId != null)	{
+        $queryArray['userId'] = $userId;
+    }
+    $email = $app->request()->get('email');
+    if ($email != null)	{
+        $queryArray['email'] = $email;
+    }
+    $password = $app->request()->get('password');
+    if ($password != null)	{
+        $queryArray['password'] = $password;
+    }
+    $name = $app->request()->get('name');
+    if ($name != null)	{
+        $queryArray['name'] = $name;
+    }
+    $surname = $app->request()->get('surname');
+    if ($surname != null)	{
+        $queryArray['surname'] = $surname;
+    }
+    $phone = $app->request()->get('phone');
+    if ($phone != null)	{
+        $queryArray['phone'] = $phone;
+    }
+    $gender = $app->request()->get('gender');
+    if ($gender != null)	{
+        $queryArray['gender'] = $gender;
+    }
+    $age = $app->request()->get('age');
+    if ($age != null)	{
+        $queryArray['age'] = $age;
+    }
+    $userAllowPush = $app->request()->get('userAllowPush');
+    if ($userAllowPush != null)	{
+        $queryArray['userAllowPush'] = $userAllowPush;
+    }
+    return $queryArray;
+}
 
 ?>
