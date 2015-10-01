@@ -70,13 +70,6 @@ $app->get('/datacontents/:id/practices/bios', function ($id) use ($app) {
     $practice->printData($app);
 });
 
-$app->get('/datacontents/:id/doctors/icons', function ($id) use ($app) {
-	global $entityManager;
-   	$doctorEntities = $entityManager->getRepository("DoctorEntity")->findBy(array('icon'=>$id));
-    $doctor = bindDoctorEntityArray($doctorEntities);
-    $doctor->printData($app);
-});
-
 $app->get('/datacontents/:id/doctors/bios', function ($id) use ($app) {
 	global $entityManager;
    	$doctorEntities = $entityManager->getRepository("DoctorEntity")->findBy(array('bio'=>$id));

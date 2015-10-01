@@ -7,7 +7,7 @@ class DoctorEntity 	{
     protected $doctorId;
     /** @ManyToOne(targetEntity="UserEntity" , fetch="LAZY") @JoinColumn(name="USER_ID", referencedColumnName="USER_ID") **/
     protected $user;
-    /** @ManyToOne(targetEntity="DataContentEntity" , fetch="LAZY") @JoinColumn(name="ICON_ID", referencedColumnName="DATA_CONTENT_ID") **/
+    /** @ManyToOne(targetEntity="ImageEntity" , fetch="LAZY") @JoinColumn(name="ICON_ID", referencedColumnName="IMAGE_ID") **/
     protected $icon;
     /** @ManyToOne(targetEntity="ImageEntity" , fetch="LAZY") @JoinColumn(name="IMAGE_ID", referencedColumnName="IMAGE_ID") **/
     protected $image;

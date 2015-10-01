@@ -22,7 +22,7 @@ function bindDoctorEntity($doctorEntity)	{
 		$doctorDto = new DoctorDto();
         $doctorDto->setDoctorId($doctorEntity->getDoctorId());
         $doctorDto->setUser(bindUserEntity($doctorEntity->getUser()));
-        $doctorDto->setIcon(bindDataContentEntity($doctorEntity->getIcon()));
+        $doctorDto->setIcon(bindImageEntity($doctorEntity->getIcon()));
         $doctorDto->setImage(bindImageEntity($doctorEntity->getImage()));
         $doctorDto->setBio(bindDataContentEntity($doctorEntity->getBio()));
         return $doctorDto;

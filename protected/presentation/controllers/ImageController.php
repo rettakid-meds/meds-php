@@ -77,6 +77,13 @@ $app->get('/images/:id/doctors/images', function ($id) use ($app) {
     $doctor->printData($app);
 });
 
+$app->get('/images/:id/doctors/icons', function ($id) use ($app) {
+	global $entityManager;
+   	$doctorEntities = $entityManager->getRepository("DoctorEntity")->findBy(array('icon'=>$id));
+    $doctor = bindDoctorEntityArray($doctorEntities);
+    $doctor->printData($app);
+});
+
 function getimageQueryArray($app)    {
     $queryArray = array();
     $imageId = $app->request()->get('imageId');
